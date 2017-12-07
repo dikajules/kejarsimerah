@@ -660,10 +660,10 @@
                 $.ajax({                    
                     url: "http://poinseru-staging2.azurewebsites.net/kejarsimerah/apply",
                     type: "POST",
-                    dataType: 'json',
+                    // dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
-                    // data: {email:email,grade:grade,token:token},
-                    data: JSON.stringify(postedApi),
+                    data: {email:email,grade:grade,token:token},
+                    // data: JSON.stringify(postedApi),
                     success: function (response) {
                         alert(response);
                     },
