@@ -664,11 +664,11 @@
                     contentType: 'application/json; charset=utf-8',
                     // data: {email:email,grade:grade,token:token},
                     data: JSON.stringify(postedApi),
-                    success: function (data) {
-                        alert(data);
+                    success: function (response) {
+                        alert(response);
                     },
                     error: function (xhRequest, ErrorText, thrownError) {
-                        alert(token);
+                        alert("error");
                     }
                 });
             });
