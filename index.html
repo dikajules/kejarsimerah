@@ -657,20 +657,20 @@
 
                 // alert(token);
 
-                // $.ajax({                    
-                //     url: "http://poinseru-staging2.azurewebsites.net/kejarsimerah/apply",
-                //     type: "POST",
-                //     dataType: 'json',
-                //     contentType: 'application/json; charset=utf-8',
-                //     // data: {email:email,grade:grade,token:token},
-                //     data: JSON.stringify(postedApi),
-                //     success: function (data) {
-                //         alert(data);
-                //     },
-                //     error: function (xhRequest, ErrorText, thrownError) {
-                //         alert(token);
-                //     }
-                // });
+                $.ajax({                    
+                    url: "http://poinseru-staging2.azurewebsites.net/kejarsimerah/apply",
+                    type: "POST",
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    // data: {email:email,grade:grade,token:token},
+                    data: JSON.stringify(postedApi),
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function (xhRequest, ErrorText, thrownError) {
+                        alert(token);
+                    }
+                });
             });
         });
     </script>
