@@ -5155,7 +5155,7 @@ body.nav-expanded {
 /*Mobile Style*/
 
 #over-wrap {
-    margin-left:25%;
+    /*margin-left:25%;*/
     background: #F1F1F1!important;
     margin-top: 60px;
     margin-bottom: 60px;
