@@ -462,6 +462,17 @@
         <!-- End of Content Wrapper -->
     </div>
 
+    <div class="inline-popups" style="opacity: 0;">
+        <a class="btn btn-custom btn-xl btn-popups-hide1" href="#popup" data-effect="mfp-zoom-in">Saya Mau</a>
+        <a class="btn btn-custom btn-xl btn-popups-hide2" href="#popup" data-effect="mfp-zoom-in">Saya Mau</a>
+        <a class="btn btn-custom btn-xl btn-popups-hide3" href="#popup_02" data-effect="mfp-zoom-in">Saya Mau</a>
+        <a class="btn btn-custom btn-xl btn-popups-hide4" href="#popup" data-effect="mfp-zoom-in">Saya Mau</a>
+        <a class="btn btn-custom btn-xl btn-popups-hide5" href="#popup" data-effect="mfp-zoom-in">Saya Mau</a>
+        <a class="btn btn-custom btn-xl btn-popups-hide6" href="#popup" data-effect="mfp-zoom-in">Saya Mau</a>
+        <a class="btn btn-custom btn-xl btn-popups-hide8" href="#popup_08" data-effect="mfp-zoom-in">Saya Mau</a>
+        <a class="btn btn-custom btn-xl btn-popups-hide9" href="#popup_09" data-effect="mfp-zoom-in">Saya Mau</a>
+    </div>
+
     <div id="popup" class="white-popup mfp-with-anim mfp-hide">
         <form id="form-validated" class="form-horizontal" action="" method="post" enctype="multipart/form-data">
             <div class="the-box">
@@ -653,6 +664,33 @@
                     data: {email:email,grade:grade,token:token},
                     success: function (response) {
                         console.log(response);
+                        if(response.message=="user unregistered"){
+                            $(".btn-popups-hide5").click();
+                        }
+                        else if(response.message=="unauthorized"){
+                            $(".btn-popups-hide5").click();
+                        }
+                        else if(response.message=="token invalid"){
+                            $(".btn-popups-hide5").click();
+                        }
+                        else if(response.message=="grade unregistered"){
+                            $(".btn-popups-hide5").click();
+                        }
+                        else if(response.message=="grade null"){
+                            $(".btn-popups-hide3").click();
+                        }
+                        else if(response.message=="different login"){
+                            $(".btn-popups-hide5").click();
+                        }
+                        else if(response.message=="registering grade success"){
+                            $(".btn-popups-hide3").click();
+                        }
+                        else if(response.message=="save failed"){
+                            $(".btn-popups-hide8").click();
+                        }
+                        else if(response.message=="grade already set"){
+                            $(".btn-popups-hide9").click();
+                        }
                     }
                 });
             });
