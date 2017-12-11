@@ -637,6 +637,22 @@
             return sURLVariables2[1];
         }
 
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
         $(document).ready(function() {
 
             var url_login = GetURLParameter('login');
@@ -657,12 +673,14 @@
 
                 $(".type-cara").html(type);
 
+                var csrftoken = getCookie('csrftoken');
+                
                 $.ajax({                    
                     url: "/kejarsimerah/apply",
                     type: "POST",
                     crossDomain:true,
                     dataType: "json",
-                    data: {email:email,grade:grade,token:token},
+                    data: {csrfmiddlewaretoken:csrftoken,email:email,grade:grade,token:token},
                     success: function (response) {
                         console.log(response);
                         if(response.message=="user unregistered"){
