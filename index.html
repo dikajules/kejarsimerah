@@ -71,8 +71,15 @@
                         <a href="/page/reksadana-online/" target="_blank">Reksa Dana Online</a>
                     </div>
                 </li>
-                <li>
+                <li id="menuhide1">
                     <a href="/user/login/" target="_blank">LOGIN</a>
+                </li>
+                <li id="menuhide2">
+                    <a href="javascript:void(0);" class="parent">PROFILE SAYA <i class="ti-nav-menus"></i></a>
+                    <div class="child">
+                        <a href="/user/profile/" target="_blank">Tanda 360 Plus</a>
+                        <a href="/user/logout/" target="_blank">Tanda Junior</a>
+                    </div>
                 </li>
                 <!-- <li><a href="#home">Home</a></li>
                 <li><a href="#kejar">#KejarSiMerah</a></li>
@@ -661,6 +668,12 @@
             var url_links = window.frameElement.getAttribute("src");
 
             // alert(url_links);
+            $("#menuhide2").hide();
+
+            if(url_login=="true"){
+                $("#menuhide1").hide();
+                $("#menuhide2").show();
+            }
 
             $(".btn-popups").attr("data-email",url_email);
             $(".btn-popups").attr("data-token",url_token);
