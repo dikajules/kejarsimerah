@@ -429,7 +429,7 @@
                         <div class="col-sm-12">
                             <br>
                             <div class="text-center top-space">
-                                <a href="/user/register/" class="btn btn-custom no-margin btn-xl" target="_blank">Daftar Poin Seru</a>
+                                <a href="/user/register/?next=/kejarsimerah/" class="btn btn-custom no-margin btn-xl" target="_blank">Daftar Poin Seru</a>
                             </div>
                         </div>
                     </div>
@@ -669,7 +669,7 @@
                 var type  = $('.btn-popups').attr("data-type"); // data "cara_si_pintar"
                 var email = $('.btn-popups').attr("data-email"); // data "email"
                 var token = $('.btn-popups').attr("data-token"); // data "token"
-                var grade = $('.btn-popups').attr("data-grade"); // data "Cara Si Pintar"
+                var grade = url_selected; // data "Cara Si Pintar"
 
                 $(".type-cara").html(type);
 
