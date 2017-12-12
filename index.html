@@ -71,15 +71,8 @@
                         <a href="/page/reksadana-online/" target="_blank">Reksa Dana Online</a>
                     </div>
                 </li>
-                <li id="menuhide1">
+                <li>
                     <a href="/user/login/?next=/kejarsimerah/" target="_blank">LOGIN</a>
-                </li>
-                <li id="menuhide2">
-                    <a href="javascript:void(0);" class="parent">PROFILE SAYA <i class="ti-nav-menus"></i></a>
-                    <div class="child">
-                        <a href="/user/profile/" target="_blank">Tanda 360 Plus</a>
-                        <a href="/user/logout/" target="_blank">Tanda Junior</a>
-                    </div>
                 </li>
                 <!-- <li><a href="#home">Home</a></li>
                 <li><a href="#kejar">#KejarSiMerah</a></li>
@@ -664,19 +657,62 @@
 
             var url_login = GetURLParameter('login');
             var url_email = GetURLParameter('email');
+            var url_selected = GetURLParameter('selected-grade');
             var url_token = GetURLParameter2();
             var url_links = window.frameElement.getAttribute("src");
 
             // alert(url_links);
-            $("#menuhide2").hide();
-
-            if(url_login=="true"){
-                $("#menuhide1").hide();
-                $("#menuhide2").show();
-            }
 
             $(".btn-popups").attr("data-email",url_email);
             $(".btn-popups").attr("data-token",url_token);
+            if(url_selected != "nograde"){
+                var type  = $('.btn-popups').attr("data-type"); // data "cara_si_pintar"
+                var email = $('.btn-popups').attr("data-email"); // data "email"
+                var token = $('.btn-popups').attr("data-token"); // data "token"
+                var grade = $('.btn-popups').attr("data-grade"); // data "Cara Si Pintar"
+
+                $(".type-cara").html(type);
+
+                var csrftoken = getCookie('csrftoken');
+                
+                $.ajax({                    
+                    url: "/kejarsimerah/apply",
+                    type: "POST",
+                    crossDomain:true,
+                    dataType: "json",
+                    data: {csrfmiddlewaretoken:csrftoken,email:email,grade:grade,token:token},
+                    success: function (response) {
+                        console.log(response);
+                        if(response.message=="user unregistered"){
+                            $(".btn-popups-hide5").click();
+                        }
+                        else if(response.message=="unauthorized"){
+                            $(".btn-popups-hide2").click();
+                        }
+                        else if(response.message=="token invalid"){
+                            $(".btn-popups-hide5").click();
+                        }
+                        else if(response.message=="grade unregistered"){
+                            $(".btn-popups-hide7").click();
+                        }
+                        else if(response.message=="grade null"){
+                            $(".btn-popups-hide7").click();
+                        }
+                        else if(response.message=="different login"){
+                            $(".btn-popups-hide6").click();
+                        }
+                        else if(response.message=="registering grade success"){
+                            $(".btn-popups-hide3").click();
+                        }
+                        else if(response.message=="save failed"){
+                            $(".btn-popups-hide8").click();
+                        }
+                        else if(response.message=="grade already set"){
+                            $(".btn-popups-hide9").click();
+                        }
+                    }
+                });
+            }
 
             $('.btn-popups').click(function () {
                 var type  = $(this).attr("data-type"); // data "cara_si_pintar"
