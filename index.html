@@ -71,8 +71,15 @@
                         <a href="/page/reksadana-online/" target="_blank">Reksa Dana Online</a>
                     </div>
                 </li>
-                <li>
+                <li id="menu1">
                     <a href="/user/login/" target="_blank">LOGIN</a>
+                </li>
+                <li id="menu2">
+                    <a href="javascript:void(0);" class="parent">PROFILE SAYA <i class="ti-nav-menus"></i></a>
+                    <div class="child">
+                        <a href="/user/profile/" target="_blank">Tanda 360 Plus</a>
+                        <a href="/user/logout/" target="_blank">Tanda Junior</a>
+                    </div>
                 </li>
                 <!-- <li><a href="#home">Home</a></li>
                 <li><a href="#kejar">#KejarSiMerah</a></li>
@@ -600,12 +607,13 @@
             <div class="row">
                 <div class="col-md-12 control-label" for="email">
                     <div class="input-group">
-                        <p class="disclaimer">Mohon maaf, Kamu sudah memilih cara berburu poin seru sesuai karakter kamu</p>
+                        <p class="disclaimer">Mohon maaf, Anda sudah mengikuti berburu poin seru</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- /container -->
     <!-- Resource jQuery -->
     <!-- <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script> -->
@@ -653,6 +661,7 @@
         }
 
         $(document).ready(function() {
+            $("#menu2").hide();
 
             var url_login = GetURLParameter('login');
             var url_email = GetURLParameter('email');
@@ -661,6 +670,14 @@
             var url_links = window.frameElement.getAttribute("src");
 
             // alert(url_links);
+            if(url_login=="true"){
+                $("#menu1").hide();
+                $("#menu2").show();
+            }   
+            else {
+                $("#menu1").show();
+                $("#menu2").hide();
+            }
 
             $(".btn-popups").attr("data-email",url_email);
             $(".btn-popups").attr("data-token",url_token);
